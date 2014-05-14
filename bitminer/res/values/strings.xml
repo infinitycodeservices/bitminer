@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">bitminer</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="play_now">Play Now</string>
+    <string name="about">About</string>
+    <string name="how_to_play">How To Play</string>
+
+</resources>
