@@ -23,8 +23,9 @@
         android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/info_button"
-        android:layout_alignLeft="@+id/info_button"
         android:layout_marginBottom="15dp"
+        android:layout_toLeftOf="@+id/store_button"
+        android:layout_toRightOf="@+id/settings_button"
         android:background="@drawable/btn_normal"
         android:clickable="true" />
 
