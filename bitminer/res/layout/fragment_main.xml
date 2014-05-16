@@ -19,17 +19,6 @@
         android:background="@drawable/settings_button" />
 
     <Button
-        android:id="@+id/play_now"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/info_button"
-        android:layout_marginBottom="15dp"
-        android:layout_toLeftOf="@+id/store_button"
-        android:layout_toRightOf="@+id/settings_button"
-        android:background="@drawable/btn_normal"
-        android:clickable="true" />
-
-    <Button
         android:id="@+id/store_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,13 +37,22 @@
         android:background="@drawable/info_button" />
 
     <Button
+        android:id="@+id/play_now"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/info_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="67dp"
+        android:background="@drawable/btn_normal"
+        android:clickable="true" />
+
+    <Button
         android:id="@+id/leader_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/store_button"
-        android:layout_alignBottom="@+id/store_button"
         android:layout_alignRight="@+id/play_now"
-        android:layout_marginRight="25dp"
+        android:layout_below="@+id/play_now"
+        android:layout_marginRight="17dp"
         android:background="@drawable/leader_button" />
 
 </RelativeLayout>
