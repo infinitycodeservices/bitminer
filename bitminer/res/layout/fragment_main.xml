@@ -10,23 +10,28 @@
     tools:context="com.example.bitminer.MainActivity$PlaceholderFragment" >
 
     <Button
+        android:onClick="buttonClick"
         android:id="@+id/settings_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="64dp"
-        android:background="@drawable/settings_button" />
+        android:background="@drawable/settings_button"
+        android:clickable="true" />
 
     <Button
+        android:onClick="buttonClick"
         android:id="@+id/store_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/play_now"
+        android:clickable="true"
         android:background="@drawable/store_button" />
 
     <Button
+        android:onClick="buttonClick"
         android:id="@+id/info_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,9 +39,12 @@
         android:layout_alignBottom="@+id/settings_button"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@+id/settings_button"
+        android:clickable="true"
         android:background="@drawable/info_button" />
+        
 
     <Button
+        android:onClick="buttonClick"
         android:id="@+id/play_now"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
@@ -47,12 +55,14 @@
         android:clickable="true" />
 
     <Button
+        android:onClick="buttonClick"
         android:id="@+id/leader_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/play_now"
         android:layout_below="@+id/play_now"
         android:layout_marginRight="17dp"
-        android:background="@drawable/leader_button" />
+        android:background="@drawable/leader_button" 
+        android:clickable="true"/>
 
 </RelativeLayout>
