@@ -16,7 +16,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_marginBottom="64dp"
-        android:background="@drawable/settings_button" />
+        android:background="@drawable/settings" />
 
     <Button
         android:id="@+id/store_button"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/play_now"
-        android:background="@drawable/store_button"
+        android:background="@drawable/store"
         
         />
     	
@@ -37,7 +37,7 @@
         android:layout_alignBottom="@+id/settings_button"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@+id/settings_button"
-        android:background="@drawable/info_button" />
+        android:background="@drawable/info" />
 
     <Button
         android:id="@+id/play_now"
@@ -46,9 +46,8 @@
         android:layout_above="@+id/info_button"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="67dp"
-        android:background="@drawable/btn_normal"
-        android:clickable="true"
-        />
+        android:background="@drawable/playnow"
+        android:clickable="true" />
 
     <Button
         android:id="@+id/leader_button"
@@ -57,6 +56,6 @@
         android:layout_alignRight="@+id/play_now"
         android:layout_below="@+id/play_now"
         android:layout_marginRight="17dp"
-        android:background="@drawable/leader_button" />
+        android:background="@drawable/leader" />
 
 </RelativeLayout>
