@@ -10,11 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.app.Activity;
-import android.net.Uri;
 import android.widget.MediaController;
 import android.widget.Toast;
-import java.util.ResourceBundle.Control; 
-import android.util.DisplayMetrics; 
 import android.content.Context;
 
  
