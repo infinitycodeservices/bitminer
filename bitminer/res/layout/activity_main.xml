@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:screenOrientation="portrait"
-    tools:context="com.example.bitminer.MainActivity"
+    tools:context="MainActivity"
     tools:ignore="MergeRootFrame" >
 
 </FrameLayout>

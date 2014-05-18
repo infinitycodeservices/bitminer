@@ -9,8 +9,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.app.Activity;
+import android.net.Uri;
+import android.widget.MediaController;
+import android.widget.Toast;
+import java.util.ResourceBundle.Control; 
+import android.util.DisplayMetrics; 
+import android.content.Context;
 
-public class MainActivity extends ActionBarActivity {
+ 
+
+
+
+public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +76,18 @@ public class MainActivity extends ActionBarActivity {
 					// TODO Auto-generated method stub
             	
             }
-            
+           
         }
+
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
+	}
+
         
     }
+
 
 					
 				
