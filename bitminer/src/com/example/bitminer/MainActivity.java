@@ -13,6 +13,7 @@ import android.app.Activity;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.content.Context;
+import android.content.Intent;
 
  
 
@@ -53,6 +54,10 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
     
+    public void launchGame(View view)	{
+    	Intent intent = new Intent(this, MainGameActivity.class);
+    	startActivity(intent);
+    }
     /**
      * A placeholder fragment containing a simple view.
      */
