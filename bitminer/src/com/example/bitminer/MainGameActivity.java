@@ -42,9 +42,9 @@ public class MainGameActivity extends SimpleBaseGameActivity {
 	 protected void onCreateResources()
 	 {
 	  // TODO Auto-generated method stub
-	  texMiner = new BitmapTextureAtlas(this.getTextureManager(), 256, 128, TextureOptions.BILINEAR_PREMULTIPLYALPHA);
+	  texMiner = new BitmapTextureAtlas(this.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
 	  regMiner = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(texMiner, this.getAssets(),
-	    "gfx/austin_miner.png", 100, 200, SPR_COLUMN, SPR_ROWS);
+	    "gfx/miner_austin.png", 0, 0, SPR_COLUMN, SPR_ROWS);
 	  texMiner.load();
 	 
 	 }
@@ -55,10 +55,10 @@ public class MainGameActivity extends SimpleBaseGameActivity {
 	  m_Scene = new Scene();
 	  m_Scene.setBackground(new Background(Color.WHITE));
 	 
-	  sprMiner = new AnimatedSprite(0, 0, regMiner, this.getVertexBufferObjectManager());
+	  sprMiner = new AnimatedSprite(150, 100, regMiner, this.getVertexBufferObjectManager());
 	  m_Scene.attachChild(sprMiner);
 	 
-	  sprMiner.animate(100);
+	  sprMiner.animate(150);
 	 
 	  return m_Scene;
 	 }
