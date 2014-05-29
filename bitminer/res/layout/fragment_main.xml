@@ -10,53 +10,49 @@
     tools:context="MainActivity" >
 
     <Button
-        android:id="@+id/settings_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginBottom="64dp"
-        android:background="@drawable/settings" />
+        android:id="@+id/play_now"
+        android:layout_width="256dp"
+        android:layout_height="256dp"
+        android:layout_above="@+id/settings_button"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/playnow"
+        android:clickable="true"
+        android:onClick="launchGame" />
 
     <Button
         android:id="@+id/store_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/leader_button"
+        android:layout_alignBottom="@+id/leader_button"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/play_now"
-        android:background="@drawable/store"
-        
-        />
-    	
-
-    <Button
-        android:id="@+id/info_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/settings_button"
-        android:layout_alignBottom="@+id/settings_button"
-        android:layout_marginLeft="20dp"
-        android:layout_toRightOf="@+id/settings_button"
-        android:background="@drawable/info" />
-
-    <Button
-        android:id="@+id/play_now"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/info_button"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="67dp"
-        android:background="@drawable/playnow"
-        android:onClick="launchGame"
-        android:clickable="true" />
+        android:background="@drawable/store" />
 
     <Button
         android:id="@+id/leader_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/play_now"
-        android:layout_below="@+id/play_now"
-        android:layout_marginRight="17dp"
+        android:layout_alignBaseline="@+id/info_button"
+        android:layout_alignBottom="@+id/info_button"
+        android:layout_toLeftOf="@+id/store_button"
         android:background="@drawable/leader" />
+
+    <Button
+        android:id="@+id/settings_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/info_button"
+        android:layout_alignBottom="@+id/info_button"
+        android:layout_alignParentLeft="true"
+        android:background="@drawable/settings" />
+
+    <Button
+        android:id="@+id/info_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="37dp"
+        android:layout_toRightOf="@+id/settings_button"
+        android:background="@drawable/info" />
 
 </RelativeLayout>
