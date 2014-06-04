@@ -1,21 +1,31 @@
 package com.example.bitminer;
 
+import java.io.IOException;
+import java.io.InputStream;
+
 import org.andengine.engine.camera.Camera;
 import org.andengine.engine.options.EngineOptions;
 import org.andengine.engine.options.ScreenOrientation;
 import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
+import org.andengine.entity.scene.background.SpriteBackground;
 import org.andengine.entity.sprite.AnimatedSprite;
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.texture.ITexture;
 import org.andengine.opengl.texture.TextureOptions;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
+import org.andengine.opengl.texture.bitmap.BitmapTexture;
+import org.andengine.opengl.texture.region.ITextureRegion;
 import org.andengine.opengl.texture.region.TextureRegion;
+import org.andengine.opengl.texture.region.TextureRegionFactory;
 import org.andengine.opengl.texture.region.TiledTextureRegion;
 import org.andengine.ui.activity.SimpleBaseGameActivity;
+import org.andengine.util.adt.io.in.IInputStreamOpener;
 import org.andengine.util.color.Color;
+import org.andengine.util.debug.Debug;
 
 import android.view.MotionEvent;
 
@@ -25,6 +35,7 @@ public class MainGameActivity extends SimpleBaseGameActivity {
 	private static final int CAMERA_HEIGHT = 480;
 	private Camera m_Camera;
 	private Scene m_Scene;
+	private ITextureRegion mBackgroundTextureRegion;
 	private BitmapTextureAtlas texMiner;
 	private TiledTextureRegion regMiner;
 	private AnimatedSprite sprMiner;
@@ -42,13 +53,27 @@ public class MainGameActivity extends SimpleBaseGameActivity {
 	 }
 	 
 	 @Override
-	 protected void onCreateResources()
-	 {
+	 protected void onCreateResources()	{
+	 try {
 	  // TODO Auto-generated method stub
 	  texMiner = new BitmapTextureAtlas(this.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
 	  regMiner = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(texMiner, this.getAssets(),
 	    "gfx/miner_austin.png", 0, 0, SPR_COLUMN, SPR_ROWS);
 	  texMiner.load();
+	  
+	  ITexture backgroundTexture = new BitmapTexture(this.getTextureManager(), new IInputStreamOpener() {
+          @Override
+          public InputStream open() throws IOException {
+              return getAssets().open("gfx/bg.png");
+          }
+      });
+	  
+	  backgroundTexture.load();
+	  this.mBackgroundTextureRegion = TextureRegionFactory.extractFromTexture(backgroundTexture);
+	  
+	  }catch (IOException e) {
+          Debug.e(e);
+      }
 	 
 	 }
 	 
@@ -56,13 +81,18 @@ public class MainGameActivity extends SimpleBaseGameActivity {
 	 protected Scene onCreateScene()
 	 {
 	  m_Scene = new Scene();
-	  m_Scene.setBackground(new Background(Color.WHITE));
+	  Sprite backgroundSprite = new Sprite(0, 0, CAMERA_WIDTH, CAMERA_HEIGHT, this.mBackgroundTextureRegion, getVertexBufferObjectManager());
+	  SpriteBackground bgSprite = new SpriteBackground(backgroundSprite);
+	  m_Scene.setBackground(bgSprite);
 	 
 	  sprMiner = new AnimatedSprite(150, 100, regMiner, this.getVertexBufferObjectManager())	{
 		  @Override
 		  public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY)	{
-			  if(pSceneTouchEvent.getAction() == TouchEvent.ACTION_DOWN)	{
+			  if(pSceneTouchEvent.getAction() == TouchEvent.ACTION_UP)	{
 				  sprMiner.animate(new long[] {150, 150, 150, 150, 200}, 0, 4, 3);
+			  }
+			  else if(pSceneTouchEvent.getAction() == TouchEvent.ACTION_MOVE)	{
+				  this.setPosition(pSceneTouchEvent.getX() - this.getWidth() / 2, pSceneTouchEvent.getY() - this.getHeight() / 2);
 			  }
 			  return true;
 		  }
