@@ -7,6 +7,8 @@ import org.andengine.engine.camera.Camera;
 import org.andengine.engine.options.EngineOptions;
 import org.andengine.engine.options.ScreenOrientation;
 import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
+import org.andengine.entity.modifier.MoveModifier;
+import org.andengine.entity.scene.IOnSceneTouchListener;
 import org.andengine.entity.scene.Scene;
 import org.andengine.entity.scene.background.Background;
 import org.andengine.entity.scene.background.SpriteBackground;
@@ -29,7 +31,7 @@ import org.andengine.util.debug.Debug;
 
 import android.view.MotionEvent;
 
-public class MainGameActivity extends SimpleBaseGameActivity {
+public class MainGameActivity extends SimpleBaseGameActivity implements IOnSceneTouchListener{
 	
 	private static final int CAMERA_WIDTH = 320;
 	private static final int CAMERA_HEIGHT = 480;
@@ -39,8 +41,8 @@ public class MainGameActivity extends SimpleBaseGameActivity {
 	private BitmapTextureAtlas texMiner;
 	private TiledTextureRegion regMiner;
 	private AnimatedSprite sprMiner;
-	private static int SPR_COLUMN = 6;
-	private static int SPR_ROWS = 1;
+	private static int SPR_COLUMN = 8;
+	private static int SPR_ROWS = 2;
 	
 	 @Override
 	 public EngineOptions onCreateEngineOptions()
@@ -58,7 +60,7 @@ public class MainGameActivity extends SimpleBaseGameActivity {
 	  // TODO Auto-generated method stub
 	  texMiner = new BitmapTextureAtlas(this.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
 	  regMiner = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(texMiner, this.getAssets(),
-	    "gfx/miner_austin.png", 0, 0, SPR_COLUMN, SPR_ROWS);
+	    "gfx/walking_austin.png", 0, 0, SPR_COLUMN, SPR_ROWS);
 	  texMiner.load();
 	  
 	  ITexture backgroundTexture = new BitmapTexture(this.getTextureManager(), new IInputStreamOpener() {
@@ -89,18 +91,31 @@ public class MainGameActivity extends SimpleBaseGameActivity {
 		  @Override
 		  public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY)	{
 			  if(pSceneTouchEvent.getAction() == TouchEvent.ACTION_UP)	{
-				  sprMiner.animate(new long[] {150, 150, 150, 150, 200}, 0, 4, 3);
-			  }
-			  else if(pSceneTouchEvent.getAction() == TouchEvent.ACTION_MOVE)	{
-				  this.setPosition(pSceneTouchEvent.getX() - this.getWidth() / 2, pSceneTouchEvent.getY() - this.getHeight() / 2);
+				  sprMiner.animate(new long[] {150, 150, 150, 150, 150}, 8, 12, 3);
 			  }
 			  return true;
 		  }
 	  };
 	  m_Scene.registerTouchArea(sprMiner);
+	  m_Scene.setOnSceneTouchListener(this);
 	  m_Scene.attachChild(sprMiner);
 	 
 	  return m_Scene;
+	 }
+	 
+	 @Override
+	 public boolean onSceneTouchEvent (Scene m_Scene, TouchEvent pSceneTouchEvent)	{
+		 if (pSceneTouchEvent.getAction() == TouchEvent.ACTION_UP) {
+			 	float touchX = pSceneTouchEvent.getX();
+			 	float touchY = pSceneTouchEvent.getY();
+			 	float[] minerLoc = sprMiner.getSceneCenterCoordinates();
+			 	float minerX = minerLoc[0];
+			 	float minerY = minerLoc[1];
+			 	sprMiner.registerEntityModifier(new MoveModifier(5, minerX, touchX, minerY, touchY));
+			 	sprMiner.animate(new long[] {150, 150, 150, 150, 150, 150, 150, 150}, 0, 7, true);
+		    }
+		 
+		    return false;
 	 }
 
 }
