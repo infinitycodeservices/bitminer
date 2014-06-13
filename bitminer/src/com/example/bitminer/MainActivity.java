@@ -1,5 +1,7 @@
 package com.example.bitminer;
 
+//@Author - Jeff Ford - Infinity Code Services
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;

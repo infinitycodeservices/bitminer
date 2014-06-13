@@ -1,5 +1,7 @@
 package com.example.bitminer;
 
+//@Author - Scott DeCota - Infinity Code Services
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -58,7 +60,7 @@ public class MainGameActivity extends SimpleBaseGameActivity implements IOnScene
 	@Override
 	protected void onCreateResources()	{
 		try {
-			// TODO Auto-generated method stub
+			// Setup resources
 			texMiner = new BitmapTextureAtlas(this.getTextureManager(), 1024, 1024, TextureOptions.BILINEAR);
 			regMiner = BitmapTextureAtlasTextureRegionFactory.createTiledFromAsset(texMiner, this.getAssets(),
 					"gfx/walking_austin.png", 0, 0, SPR_COLUMN, SPR_ROWS);
@@ -118,15 +120,14 @@ public class MainGameActivity extends SimpleBaseGameActivity implements IOnScene
 			        protected void onModifierStarted(IEntity pItem)
 			        {
 			                super.onModifierStarted(sprMiner);
-			                // Your action after starting modifier
+			                // Start Walking Animation
 			                sprMiner.animate(new long[] {150, 150, 150, 150, 150, 150, 150, 150}, 0, 7, true);
 			        }
 
 			        protected void onModifierFinished(IEntity pItem)
 			        {
 			                super.onModifierFinished(sprMiner);
-			                // Your action after finishing modifier
-			                //STOP ANIMATION HERE!!!
+			                //Stop Walking Animation
 			                sprMiner.stopAnimation(0);
 			        }
 			};

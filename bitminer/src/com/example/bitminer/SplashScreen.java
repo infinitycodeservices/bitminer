@@ -1,5 +1,7 @@
 package com.example.bitminer;
 
+//@Author - Jeff Ford - Infinity Code Services
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
